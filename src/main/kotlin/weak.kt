@@ -26,7 +26,7 @@ import kotlin.reflect.jvm.jvmErasure
  * @param defaultType pass to override the property type.
  * @param defaultValue a function to lazily initialize
  *                the field with.
- * @since 1.1.0
+ * @since 1.0.0
  */
 fun <T> weak(
     defaultName: String? = null,
@@ -57,7 +57,7 @@ fun <T> weak(
  * @param weakness the weakness instance.
  * @param defaultValue a function to lazily initialize
  *                the field with.
- * @since 1.1.0
+ * @since 1.0.0
  */
 fun <T> weak(
     weakness: Weakness,
