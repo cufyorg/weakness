@@ -15,7 +15,7 @@ extra interfaces.
 
 This feature is inescapable. Or, is it?
 
-This library achieves this feature by storing the data in
+This library bypasses this feature by storing the data in
 a global instance. A `Map` or more specifically a
 `WeakHashMap` to deal with garbage collection.
 
