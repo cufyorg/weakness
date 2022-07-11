@@ -1,14 +1,14 @@
 package org.cufy.weakness.test.mock
 
-import org.cufy.weakness.WeakProperty
 import org.cufy.weakness.Weakness
+import org.cufy.weakness.weak
 
 val MyClosedWeakness = Weakness()
 
 class Entity
 
-var Entity.name: String by WeakProperty()
+var Entity.name: String by weak()
 
-var Entity.nullableName: String? by WeakProperty()
+var Entity.nullableName: String? by weak()
 
-var Entity.closedName: String by MyClosedWeakness.WeakProperty("name")
+var Entity.closedName: String by weak(MyClosedWeakness, "name")

@@ -27,6 +27,7 @@ import kotlin.reflect.typeOf
  * @author LSafer
  * @since 1.0.0
  */
+@Deprecated("Old Weakness API. Will be removed on 2.0.0", level = DeprecationLevel.WARNING)
 class WeakProperty<T>(
     /**
      * The name to associate the data with.
@@ -42,7 +43,7 @@ class WeakProperty<T>(
     internal val weakness: Weakness
 ) {
     operator fun getValue(instance: Any, property: KProperty<*>): T {
-        val value = weakness[instance, name ?: property.name]
+        val value = weakness[instance][name ?: property.name]
 
         if (value == null && !type.isMarkedNullable)
             throw NullPointerException("Property ${name ?: property.name} not initialized")
@@ -62,7 +63,7 @@ class WeakProperty<T>(
             @Suppress("UNNECESSARY_NOT_NULL_ASSERTION")
             throw ClassCastException("Property ${name ?: property.name} of type ${type.jvmErasure} cannot accept value of type ${value!!::class.java}")
 
-        weakness[instance, name ?: property.name] = value
+        weakness[instance][name ?: property.name] = value
     }
 }
 
@@ -73,8 +74,14 @@ class WeakProperty<T>(
  * @param name pass to override the property name.
  * @since 1.0.0
  */
+@Suppress("Deprecation")
+@Deprecated(
+    "Old Weakness API. Will be removed on 2.0.0",
+    ReplaceWith("weak(name)"),
+    DeprecationLevel.WARNING
+)
 inline fun <reified T> Weakness.WeakProperty(
-    name: String? = null
+    name: String? = null,
 ): WeakProperty<T> {
     return WeakProperty(
         name = name,
@@ -90,8 +97,14 @@ inline fun <reified T> Weakness.WeakProperty(
  * @param name pass to override the property name.
  * @since 1.0.0
  */
+@Suppress("Deprecation")
+@Deprecated(
+    "Old Weakness API. Will be removed on 2.0.0",
+    ReplaceWith("weak(name)"),
+    DeprecationLevel.WARNING
+)
 inline fun <reified T> WeakProperty(
-    name: String? = null
+    name: String? = null,
 ): WeakProperty<T> {
     return WeakProperty(
         name = name,

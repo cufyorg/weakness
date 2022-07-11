@@ -47,7 +47,7 @@ The following is basic usage example:
 ```kotlin
 class Entity
 
-var Entity.name: String by WeakProperty()
+var Entity.name: String by weak()
 ```
 
 Or you can define your closed-scoped properties
@@ -57,5 +57,15 @@ class Entity
 
 val MyWeakness = Weakness()
 
-var Entity.closedName: String by MyWeakness.WeakProperty("name")
+var Entity.closedName: String by weak(MyWeakness, "name")
+```
+
+So far, we only declared lateinit weak properties.
+To declare a lazily initialized property you need to pass
+a default value factory to the `weak` function.
+
+```kotlin
+class Entity
+
+var Entity.name: String by weak { "default value" }
 ```
