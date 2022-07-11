@@ -1,4 +1,4 @@
-# Weakness
+# Weakness [![](https://jitpack.io/v/org.cufy/weakness.svg)](https://jitpack.io/#org.cufy/weakness)
 
 Kotlin weak properties
 
